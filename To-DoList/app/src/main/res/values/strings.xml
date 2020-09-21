@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">To-Do List</string>
-    <string name="todoAdd_btn">ADD</string>
-    <string name="todoEnter_et_hint">Enter what to do here...</string>
+    <string name="inputButtonText">ADD</string>
+    <string name="inputEditTextHint">Enter what to do here...</string>
 </resources>
