@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">To-Do List</string>
+    <string name="inputEditTextHint">Enter what to do</string>
     <string name="inputButtonText">ADD</string>
-    <string name="inputEditTextHint">Enter what to do here...</string>
+    <string name="editButtonText">Edit</string>
+    <string name="deleteButtonText">Delete</string>
 </resources>
