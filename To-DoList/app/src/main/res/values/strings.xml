@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">To-Do List</string>
-    <string name="inputEditTextHint">Enter what to do</string>
+    <string name="inputEditTextHint">Enter task name</string>
     <string name="inputButtonText">ADD</string>
-    <string name="editButtonText">Edit</string>
-    <string name="deleteButtonText">Delete</string>
+    <string name="editButtonText">EDIT TASK</string>
+    <string name="deleteButtonText">DELETE TASK</string>
+    <string name="taskNameTextViewText">Enter task name</string>
+    <string name="addTaskButtonText">ADD TASK</string>
 </resources>
