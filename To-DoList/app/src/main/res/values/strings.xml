@@ -4,7 +4,7 @@
     <string name="searchButtonText">SEARCH</string>
     <string name="newTaskButtonText">NEW TASK</string>
     <string name="deleteTaskButtonText">DELETE TASK</string>
-    <string name="taskNameTextViewText">Enter task name</string>
+    <string name="taskNameTextViewText">Task Name</string>
     <string name="doneButtonText">DONE</string>
     <string name="markAsCompleteCheckBoxText">Mark as complete</string>
     <string name="taskDescriptionTextViewText">Task Description</string>
