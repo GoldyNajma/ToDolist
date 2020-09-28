@@ -9,63 +9,63 @@
     tools:context="com.example.to_dolist.MainActivity">
 
     <LinearLayout
-        android:id="@+id/inputLinearLayout"
+        android:id="@+id/searchLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/inputEditText"
+            android:id="@+id/searchEditText"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:inputType="text"
-            android:hint="@string/inputEditTextHint"
-            android:autofillHints="@string/inputEditTextHint"
+            android:hint="@string/searchEditTextHint"
+            android:autofillHints="@string/searchEditTextHint"
             android:textColorHint="@color/grey888"/>
 
         <Button
-            android:id="@+id/inputButton"
+            android:id="@+id/searchButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/inputButtonText" />
+            android:text="@string/searchButtonText" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/otherActionsLinearLayout"
+        android:id="@+id/addAndDeleteLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/editButton"
+            android:id="@+id/newTaskButton"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="@string/editButtonText" />
+            android:text="@string/newTaskButtonText" />
 
         <Button
-            android:id="@+id/deleteButton"
+            android:id="@+id/deleteTaskButton"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="@string/deleteButtonText" />
+            android:text="@string/deleteTaskButtonText" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/toDoListLinearLayout"
+        android:id="@+id/tasksLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
         android:orientation="vertical">
 
         <ListView
-            android:id="@+id/toDoListListView"
+            android:id="@+id/tasksListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

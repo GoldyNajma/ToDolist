@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">To-Do List</string>
-    <string name="inputEditTextHint">Enter task name</string>
-    <string name="inputButtonText">ADD</string>
-    <string name="editButtonText">EDIT TASK</string>
-    <string name="deleteButtonText">DELETE TASK</string>
+    <string name="searchEditTextHint">Search task</string>
+    <string name="searchButtonText">SEARCH</string>
+    <string name="newTaskButtonText">NEW TASK</string>
+    <string name="deleteTaskButtonText">DELETE TASK</string>
     <string name="taskNameTextViewText">Enter task name</string>
-    <string name="addTaskButtonText">ADD TASK</string>
+    <string name="doneButtonText">DONE</string>
+    <string name="markAsCompleteCheckBoxText">Mark as complete</string>
+    <string name="taskDescriptionTextViewText">Task Description</string>
 </resources>

@@ -28,7 +28,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/inputEditTextHint"
+        android:hint="@string/searchEditTextHint"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/taskNameTextView" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/taskDescriptionEditText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -45,7 +45,6 @@
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Task Description..."
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toTopOf="@+id/markAsCompleteCheckBox"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,27 +52,27 @@
         app:layout_constraintTop_toBottomOf="@+id/taskDescriptionTextView" />
 
     <Button
-        android:id="@+id/addButton"
+        android:id="@+id/doneButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/addTaskButtonText"
+        android:text="@string/doneButtonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/deleteButton" />
+        app:layout_constraintStart_toEndOf="@+id/deleteTaskButton" />
 
     <Button
-        android:id="@+id/deleteButton"
+        android:id="@+id/deleteTaskButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:text="Delete Task"
+        android:text="@string/deleteTaskButtonText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addButton"
+        app:layout_constraintEnd_toStartOf="@+id/doneButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -83,7 +82,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:text="Task Description"
+        android:text="@string/taskDescriptionTextViewText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskNameEditText" />
@@ -95,8 +94,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Mark as complete"
-        app:layout_constraintBottom_toTopOf="@+id/addButton"
+        android:text="@string/markAsCompleteCheckBoxText"
+        app:layout_constraintBottom_toTopOf="@+id/doneButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
