@@ -1,11 +1,20 @@
 <resources>
     <string name="app_name">To-Do List</string>
-    <string name="searchEditTextHint">Search task</string>
-    <string name="searchButtonText">SEARCH</string>
-    <string name="newTaskButtonText">NEW TASK</string>
-    <string name="deleteTaskButtonText">DELETE TASK</string>
-    <string name="taskNameTextViewText">Task Name</string>
-    <string name="doneButtonText">DONE</string>
-    <string name="markAsCompleteCheckBoxText">Mark as complete</string>
-    <string name="taskDescriptionTextViewText">Task Description</string>
+    <string name="et_search_hint">Search task</string>
+    <string name="bt_search_text">SEARCH</string>
+    <string name="bt_add_task_text">ADD TASK</string>
+    <string name="bt_delete_task_text">DELETE TASK</string>
+    <string name="tv_task_name_text">Task Name</string>
+    <string name="bt_done_text">DONE</string>
+    <string name="cb_mark_as_complete_text">Mark as complete</string>
+    <string name="tv_task_description_text">Task Description</string>
+    <string name="bt_add_text">ADD</string>
+    <string name="bt_cancel_text">CANCEL</string>
+
+    <string name="et_email_hint">Enter email address</string>
+    <string name="et_password_hint">Enter password</string>
+    <string name="bt_login_text">LOGIN</string>
+    <string name="iv_profile_picture_content_description">Profile Picture</string>
+    <string name="tv_email_text">Email:\u0020</string>
+    <string name="tv_password_text">Password:\u0020</string>
 </resources>

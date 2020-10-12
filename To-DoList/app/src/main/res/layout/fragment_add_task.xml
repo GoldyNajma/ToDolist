@@ -7,36 +7,36 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/taskNameTextView"
+        android:id="@+id/tv_task_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/taskNameTextViewText"
-        app:layout_constraintBottom_toTopOf="@+id/taskNameEditText"
+        android:text="@string/tv_task_name_text"
+        app:layout_constraintBottom_toTopOf="@+id/et_task_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/taskNameEditText"
+        android:id="@+id/et_task_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/searchEditTextHint"
+        android:hint="@string/et_search_hint"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskNameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_name" />
 
     <EditText
-        android:id="@+id/taskDescriptionEditText"
+        android:id="@+id/et_task_description"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -46,57 +46,57 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/markAsCompleteCheckBox"
+        app:layout_constraintBottom_toTopOf="@+id/cb_mark_as_complete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskDescriptionTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_description" />
 
     <Button
-        android:id="@+id/doneButton"
+        android:id="@+id/bt_add"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/doneButtonText"
+        android:text="@string/bt_add_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/deleteTaskButton" />
-
-    <Button
-        android:id="@+id/deleteTaskButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/deleteTaskButtonText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/doneButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/bt_cancel" />
 
     <TextView
-        android:id="@+id/taskDescriptionTextView"
+        android:id="@+id/tv_task_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/taskDescriptionTextViewText"
+        android:text="@string/tv_task_description_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskNameEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/et_task_name" />
 
     <CheckBox
-        android:id="@+id/markAsCompleteCheckBox"
+        android:id="@+id/cb_mark_as_complete"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/markAsCompleteCheckBoxText"
-        app:layout_constraintBottom_toTopOf="@+id/doneButton"
+        android:text="@string/cb_mark_as_complete_text"
+        app:layout_constraintBottom_toTopOf="@+id/bt_add"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bt_cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/bt_cancel_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bt_add"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,67 +5,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.to_dolist.MainActivity">
+    android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/searchLinearLayout"
+        android:id="@+id/ll_search"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/searchEditText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:inputType="text"
-            android:hint="@string/searchEditTextHint"
-            android:autofillHints="@string/searchEditTextHint"
-            android:textColorHint="@color/grey888"/>
-
-        <Button
-            android:id="@+id/searchButton"
+<!--        <EditText-->
+<!--            android:id="@+id/et_search"-->
+        <TextView
+            android:id="@+id/tv_email"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/searchButtonText" />
+            android:text="@string/tv_email_text" />
+<!--            android:inputType="text"-->
+<!--            android:hint="@string/et_search_hint"-->
+<!--            android:autofillHints=""-->
+<!--            android:importantForAutofill="no"-->
+<!--            tools:targetApi="O" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/bt_search_task"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/bt_search_text" />-->
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/addAndDeleteLinearLayout"
+        android:id="@+id/ll_add_and_delete"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/newTaskButton"
+            android:id="@+id/bt_add_task"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="@string/newTaskButtonText" />
+            android:text="@string/bt_add_task_text" />
 
         <Button
-            android:id="@+id/deleteTaskButton"
+            android:id="@+id/bt_delete_task"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="@string/deleteTaskButtonText" />
+            android:text="@string/bt_delete_task_text" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/tasksLinearLayout"
+        android:id="@+id/ll_tasks"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
         android:orientation="vertical">
 
         <ListView
-            android:id="@+id/tasksListView"
+            android:id="@+id/lv_tasks"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
