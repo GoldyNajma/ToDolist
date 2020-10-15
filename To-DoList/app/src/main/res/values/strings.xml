@@ -10,6 +10,8 @@
     <string name="tv_task_description_text">Task Description</string>
     <string name="bt_add_text">ADD</string>
     <string name="bt_cancel_text">CANCEL</string>
+    <string name="et_task_name_hint">Task name</string>
+    <string name="et_task_description_hint">Task description</string>
 
     <string name="et_email_hint">Enter email address</string>
     <string name="et_password_hint">Enter password</string>

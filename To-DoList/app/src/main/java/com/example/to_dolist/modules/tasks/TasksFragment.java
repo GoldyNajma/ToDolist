@@ -18,6 +18,7 @@ import com.example.to_dolist.modules.login.LoginActivity;
 
 public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Presenter>
         implements TasksContract.View {
+    Bundle user;
 //    ImageView ivProfilePicture;
     TextView tvEmail;
 //    TextView tvPassword;
@@ -25,19 +26,23 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
     Button btDeleteTask;
     ListView lvTasks;
 
+    public TasksFragment(Bundle user) {
+        this.user = user;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedStateInstance) {
-        Bundle profileInfo = getActivity().getIntent().getExtras();
-
         super.onCreateView(inflater, container, savedStateInstance);
         fragmentView = inflater.inflate(R.layout.fragment_tasks, container, false);
         btAddTask = fragmentView.findViewById(R.id.bt_add_task);
         btDeleteTask = fragmentView.findViewById(R.id.bt_delete_task);
         lvTasks = fragmentView.findViewById(R.id.lv_tasks);
+        tvEmail = fragmentView.findViewById(R.id.tv_email);
 
         mPresenter = new TasksPresenter(this);
         mPresenter.start();
+        mPresenter.initializeProfile(user);
 
         btAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,9 +60,9 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
         mPresenter.moveToAddTaskPage();
     }
 
-    public void showProfileInfo(Bundle profileInfo) {
-        String email = profileInfo.getString("email");
-//        String password = profileInfo.getString("password");
+    public void showProfileInfo() {
+        String email = user.getString("email");
+//        String password = user.getString("password");
 
         showEmail(email);
 //        showPassword(password);
@@ -86,7 +91,11 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
     @Override
     public void redirectToAddTask() {
         Intent intent = new Intent(activity, AddTaskActivity.class);
+        String email = user.getString("email");
+        String password =user.getString("password");
 
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
     }
 

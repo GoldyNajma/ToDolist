@@ -18,6 +18,11 @@ public class TasksPresenter implements TasksContract.Presenter {
     }
 
     @Override
+    public void initializeProfile(Bundle user) {
+        view.showProfileInfo();
+    }
+
+    @Override
     public void moveToAddTaskPage() {
         view.redirectToAddTask();
     }

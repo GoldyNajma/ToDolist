@@ -14,16 +14,19 @@ import androidx.annotation.Nullable;
 import com.example.to_dolist.R;
 import com.example.to_dolist.base.BaseFragment;
 import com.example.to_dolist.modules.login.LoginActivity;
+import com.example.to_dolist.modules.tasks.TasksActivity;
 
 public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContract.Presenter>
         implements AddTaskContract.View {
-    //    ImageView ivProfilePicture;
-//    TextView tvEmail;
-//    TextView tvPassword;
+    Bundle user;
     Button btAdd;
     Button btCancel;
     EditText etTaskName;
     EditText etTaskDescription;
+
+    public AddTaskFragment(Bundle user) {
+        this.user = user;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -37,24 +40,30 @@ public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContra
 
         mPresenter = new AddTaskPresenter(this);
         mPresenter.start();
+        btAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setBtAddOnClick();
+            }
+        });
 
         setTitle("Main Page");
 
         return fragmentView;
     }
 
-//    @Override
-//    public void redirectToLogin() {
-//        Intent intent = new Intent(activity, LoginActivity.class);
-//
-//        startActivity(intent);
-//        activity.finish();
-//    }
+    public void setBtAddOnClick() {
+        mPresenter.performAddTask();
+    }
 
     @Override
     public void redirectToTasks() {
-        Intent intent = new Intent(activity, AddTaskActivity.class);
+        Intent intent = new Intent(activity, TasksActivity.class);
+        String email = user.getString("email");
+        String password = user.getString("password");
 
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
     }
 

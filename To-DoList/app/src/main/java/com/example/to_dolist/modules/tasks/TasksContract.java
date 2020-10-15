@@ -8,13 +8,13 @@ import com.example.to_dolist.base.BaseView;
 public interface TasksContract {
     interface Presenter extends BasePresenter {
         void performLogout();
-//        void initializeProfile(Bundle profileInfo);
+        void initializeProfile(Bundle user);
         void moveToAddTaskPage();
     }
 
     interface View extends BaseView<Presenter> {
-        void showProfileInfo(Bundle profileInfo);
         void redirectToLogin();
+        void showProfileInfo();
         void redirectToAddTask();
     }
 }
