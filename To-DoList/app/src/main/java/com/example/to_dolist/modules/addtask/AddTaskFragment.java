@@ -7,35 +7,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 
 import com.example.to_dolist.R;
 import com.example.to_dolist.base.BaseFragment;
-import com.example.to_dolist.modules.login.LoginActivity;
 import com.example.to_dolist.modules.tasks.TasksActivity;
 
 public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContract.Presenter>
         implements AddTaskContract.View {
-    Bundle user;
     Button btAdd;
     Button btCancel;
     EditText etTaskName;
     EditText etTaskDescription;
 
-    public AddTaskFragment(Bundle user) {
-        this.user = user;
+    public AddTaskFragment() {
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedStateInstance) {
         super.onCreateView(inflater, container, savedStateInstance);
-        fragmentView = inflater.inflate(R.layout.fragment_add_task, container, false);
-        btAdd = fragmentView.findViewById(R.id.bt_add);
+        fragmentView = inflater.inflate(R.layout.fragment_task, container, false);
+        btAdd = fragmentView.findViewById(R.id.bt_save);
         btCancel = fragmentView.findViewById(R.id.bt_cancel);
-        etTaskName = fragmentView.findViewById(R.id.et_task_name);
+        etTaskName = fragmentView.findViewById(R.id.et_task_title);
         etTaskDescription = fragmentView.findViewById(R.id.et_task_description);
 
         mPresenter = new AddTaskPresenter(this);
@@ -53,17 +50,20 @@ public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContra
     }
 
     public void setBtAddOnClick() {
-        mPresenter.performAddTask();
+        String taskTitle = etTaskName.getText().toString();
+        String taskDescription = etTaskDescription.getText().toString();
+
+        mPresenter.saveData(taskTitle, taskDescription);
     }
 
     @Override
     public void redirectToTasks() {
         Intent intent = new Intent(activity, TasksActivity.class);
-        String email = user.getString("email");
-        String password = user.getString("password");
+//        String email = user.getString("email");
+//        String password = user.getString("password");
 
-        intent.putExtra("email", email);
-        intent.putExtra("password", password);
+//        intent.putExtra("email", email);
+//        intent.putExtra("password", password);
         startActivity(intent);
     }
 

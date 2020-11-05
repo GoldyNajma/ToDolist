@@ -20,7 +20,7 @@ public class AddTaskActivity extends BaseFragmentHolderActivity {
         btOptionMenu.setVisibility(View.GONE);
         ivIcon.setVisibility(View.VISIBLE);
 
-        addTaskFragment = new AddTaskFragment(user);
+        addTaskFragment = new AddTaskFragment();
         setCurrentFragment(addTaskFragment, false);
     }
 }

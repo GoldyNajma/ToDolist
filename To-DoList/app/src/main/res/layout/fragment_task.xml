@@ -14,21 +14,21 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/tv_task_name_text"
-        app:layout_constraintBottom_toTopOf="@+id/et_task_name"
+        android:text="@string/tv_task_title_text"
+        app:layout_constraintBottom_toTopOf="@+id/et_task_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_task_name"
+        android:id="@+id/et_task_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/et_task_name_hint"
+        android:hint="@string/et_task_title_hint"
         android:autofillHints=""
         android:importantForAutofill="no"
         tools:targetApi="O"
@@ -59,13 +59,13 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_task_description" />
 
     <Button
-        android:id="@+id/bt_add"
+        android:id="@+id/bt_save"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/bt_add_text"
+        android:text="@string/bt_save_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bt_cancel" />
@@ -80,7 +80,7 @@
         android:text="@string/tv_task_description_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_task_name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_task_title" />
 
     <CheckBox
         android:id="@+id/cb_mark_as_complete"
@@ -90,7 +90,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/cb_mark_as_complete_text"
-        app:layout_constraintBottom_toTopOf="@+id/bt_add"
+        app:layout_constraintBottom_toTopOf="@+id/bt_save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -103,7 +103,7 @@
         android:layout_marginBottom="16dp"
         android:text="@string/bt_cancel_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bt_add"
+        app:layout_constraintEnd_toStartOf="@+id/bt_save"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

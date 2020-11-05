@@ -4,13 +4,13 @@
     <string name="bt_search_text">SEARCH</string>
     <string name="bt_add_task_text">ADD TASK</string>
     <string name="bt_delete_task_text">DELETE TASK</string>
-    <string name="tv_task_name_text">Task Name</string>
+    <string name="tv_task_title_text">Task Title</string>
     <string name="bt_done_text">DONE</string>
     <string name="cb_mark_as_complete_text">Mark as complete</string>
     <string name="tv_task_description_text">Task Description</string>
-    <string name="bt_add_text">ADD</string>
+    <string name="bt_save_text">SAVE</string>
     <string name="bt_cancel_text">CANCEL</string>
-    <string name="et_task_name_hint">Task name</string>
+    <string name="et_task_title_hint">Task title</string>
     <string name="et_task_description_hint">Task description</string>
 
     <string name="et_email_hint">Enter email address</string>

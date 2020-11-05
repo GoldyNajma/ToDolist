@@ -10,24 +10,32 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.to_dolist.R;
 import com.example.to_dolist.base.BaseFragment;
+import com.example.to_dolist.data.model.Task;
 import com.example.to_dolist.modules.addtask.AddTaskActivity;
+import com.example.to_dolist.modules.edittask.EditTaskActivity;
 import com.example.to_dolist.modules.login.LoginActivity;
+import com.example.to_dolist.utils.RecyclerViewAdapterTodolist;
+
+import java.util.ArrayList;
 
 public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Presenter>
         implements TasksContract.View {
-    Bundle user;
 //    ImageView ivProfilePicture;
     TextView tvEmail;
 //    TextView tvPassword;
     Button btAddTask;
     Button btDeleteTask;
     ListView lvTasks;
+    RecyclerView rvTasks;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
-    public TasksFragment(Bundle user) {
-        this.user = user;
+    public TasksFragment() {
     }
 
     @Override
@@ -35,19 +43,39 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
                              @Nullable Bundle savedStateInstance) {
         super.onCreateView(inflater, container, savedStateInstance);
         fragmentView = inflater.inflate(R.layout.fragment_tasks, container, false);
-        btAddTask = fragmentView.findViewById(R.id.bt_add_task);
-        btDeleteTask = fragmentView.findViewById(R.id.bt_delete_task);
-        lvTasks = fragmentView.findViewById(R.id.lv_tasks);
         tvEmail = fragmentView.findViewById(R.id.tv_email);
+        btAddTask = fragmentView.findViewById(R.id.bt_add_task);
+//        btDeleteTask = fragmentView.findViewById(R.id.bt_delete_task);
+//        lvTasks = fragmentView.findViewById(R.id.lv_tasks);
 
         mPresenter = new TasksPresenter(this);
         mPresenter.start();
-        mPresenter.initializeProfile(user);
+//        mPresenter.initializeProfile(user);
+
+        rvTasks = fragmentView.findViewById(R.id.rv_tasks);
+        rvTasks.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(activity);
+        rvTasks.setLayoutManager(mLayoutManager);
+
+        final ArrayList<Task> data = mPresenter.getDataSet();
+        mAdapter = new RecyclerViewAdapterTodolist(data);
+        rvTasks.setAdapter(mAdapter);
+
+
+        ((RecyclerViewAdapterTodolist) mAdapter).setOnItemClickListener(new RecyclerViewAdapterTodolist.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                String id = data.get(position).getId();
+//                Log.d("BELAJAR ACTIVITY",">>>>>"+ position);
+                redirectToEditTask(id);
+            }
+        });
 
         btAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setBtAddTaskOnClick();
+                redirectToAddTask();
+//                setBtAddTaskOnClick();
             }
         });
 
@@ -56,18 +84,19 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
         return fragmentView;
     }
 
-    public void setBtAddTaskOnClick() {
-        mPresenter.moveToAddTaskPage();
-    }
+//    public void setBtAddTaskOnClick() {
+////        mPresenter.moveToAddTaskPage();
+//        redirectToAddTask();
+//    }
 
-    public void showProfileInfo() {
-        String email = user.getString("email");
-//        String password = user.getString("password");
-
-        showEmail(email);
-//        showPassword(password);
-    }
+//    public void showProfileInfo() {
+//        String email = user.getString("email");
+////        String password = user.getString("password");
 //
+//        showEmail(email);
+////        showPassword(password);
+//    }
+
 //    public void showPassword(String password) {
 //        String passwordText = getResources().getString(R.string.tv_password_text) + password;
 //
@@ -80,6 +109,11 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
         tvEmail.setText(emailText);
     }
 
+//    @Override
+//    public void showTasks() {
+//
+//    }
+
     @Override
     public void redirectToLogin() {
         Intent intent = new Intent(activity, LoginActivity.class);
@@ -91,11 +125,18 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
     @Override
     public void redirectToAddTask() {
         Intent intent = new Intent(activity, AddTaskActivity.class);
-        String email = user.getString("email");
-        String password =user.getString("password");
+//        String email = user.getString("email");
+//        String password =user.getString("password");
 
-        intent.putExtra("email", email);
-        intent.putExtra("password", password);
+//        intent.putExtra("email", email);
+//        intent.putExtra("password", password);
+        startActivity(intent);
+//        activity.finish();
+    }
+
+    public void redirectToEditTask(String id) {
+        Intent intent = new Intent(activity, EditTaskActivity.class);
+        intent.putExtra("TaskId", id);
         startActivity(intent);
     }
 

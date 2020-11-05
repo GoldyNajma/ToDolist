@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/ll_search"
+        android:id="@+id/ll_profile"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -51,12 +51,12 @@
             android:layout_height="match_parent"
             android:text="@string/bt_add_task_text" />
 
-        <Button
-            android:id="@+id/bt_delete_task"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="@string/bt_delete_task_text" />
+<!--        <Button-->
+<!--            android:id="@+id/bt_delete_task"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="@string/bt_delete_task_text" />-->
 
     </LinearLayout>
 
@@ -67,10 +67,17 @@
         android:layout_weight="8"
         android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/lv_tasks"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_tasks"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
+<!--        android:id="@+id/recyclerViewTodolist"-->
+
+<!--            android:layout_heigth="match_parent" />-->
+<!--        <ListView-->
+<!--            android:id="@+id/lv_tasks"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
 
     </LinearLayout>
 

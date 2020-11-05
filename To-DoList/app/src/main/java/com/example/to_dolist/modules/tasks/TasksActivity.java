@@ -19,8 +19,8 @@ public class TasksActivity extends BaseFragmentHolderActivity {
         btOptionMenu.setVisibility(View.GONE);
         ivIcon.setVisibility(View.VISIBLE);
 
-        tasksFragment = new TasksFragment(user);
-        setCurrentFragment(tasksFragment, false);
+        tasksFragment = new TasksFragment();
+        setCurrentFragment(tasksFragment, true);
 
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
