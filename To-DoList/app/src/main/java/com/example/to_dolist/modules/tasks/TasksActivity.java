@@ -20,7 +20,7 @@ public class TasksActivity extends BaseFragmentHolderActivity {
         ivIcon.setVisibility(View.VISIBLE);
 
         tasksFragment = new TasksFragment();
-        setCurrentFragment(tasksFragment, true);
+        setCurrentFragment(tasksFragment, false);
 
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override

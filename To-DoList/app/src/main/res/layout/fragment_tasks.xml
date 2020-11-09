@@ -14,26 +14,11 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-<!--        <EditText-->
-<!--            android:id="@+id/et_search"-->
         <TextView
             android:id="@+id/tv_email"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:text="@string/tv_email_text" />
-<!--            android:inputType="text"-->
-<!--            android:hint="@string/et_search_hint"-->
-<!--            android:autofillHints=""-->
-<!--            android:importantForAutofill="no"-->
-<!--            tools:targetApi="O" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/bt_search_task"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="@string/bt_search_text" />-->
 
     </LinearLayout>
 
@@ -51,19 +36,12 @@
             android:layout_height="match_parent"
             android:text="@string/bt_add_task_text" />
 
-<!--        <Button-->
-<!--            android:id="@+id/bt_delete_task"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:text="@string/bt_delete_task_text" />-->
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_tasks"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="8"
         android:orientation="vertical">
 
@@ -71,15 +49,7 @@
             android:id="@+id/rv_tasks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-<!--        android:id="@+id/recyclerViewTodolist"-->
-
-<!--            android:layout_heigth="match_parent" />-->
-<!--        <ListView-->
-<!--            android:id="@+id/lv_tasks"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent" />-->
 
     </LinearLayout>
-
 
 </LinearLayout>

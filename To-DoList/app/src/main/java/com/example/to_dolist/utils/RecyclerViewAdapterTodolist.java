@@ -13,13 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.to_dolist.R;
 import com.example.to_dolist.data.model.Task;
 
-public class RecyclerViewAdapterTodolist extends RecyclerView.Adapter<RecyclerViewAdapterTodolist.MyViewHolder> {
+public class RecyclerViewAdapterTodolist
+        extends RecyclerView.Adapter<RecyclerViewAdapterTodolist.MyViewHolder> {
     private static ArrayList<Task> mDataset;
     private static MyClickListener myClickListener;
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class MyViewHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener {
         TextView tvTitle;
         TextView tvDescription;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTodolistTitle);
@@ -29,23 +32,36 @@ public class RecyclerViewAdapterTodolist extends RecyclerView.Adapter<RecyclerVi
 
         @Override
         public void onClick(View view) {
-            int position =getAdapterPosition();
+            int position = getAdapterPosition();
+
             myClickListener.onItemClick(position, view);
         }
     }
 
     public RecyclerViewAdapterTodolist(ArrayList<Task> myDataset) {
         mDataset = myDataset;
+
+        if (mDataset.size() > 0) {
+            Log.d("AppDebug",
+                    "Last item: " + myDataset.get(myDataset.size() - 1).getTitle());
+        } else {
+            Log.d("AppDebug", "Task is empty");
+        }
     }
 
     @Override
-    public RecyclerViewAdapterTodolist.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerViewAdapterTodolist.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                                       int viewType) {
         try {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_item_todolist, parent, false);
+            View view = LayoutInflater.from(parent.getContext())
+                            .inflate(R.layout.cardview_item_todolist, parent, false);
             MyViewHolder myViewHolder = new MyViewHolder(view);
+
+            Log.d("AppDebug", "onCreateViewHolder with " + mDataset.size() + " item");
+
             return myViewHolder;
         } catch (Exception e) {
-            Log.e("To-Do List", "onCreateViewHolder", e);
+            Log.e("AppDebug", "onCreateViewHolder", e);
             throw e;
         }
     }
@@ -64,6 +80,7 @@ public class RecyclerViewAdapterTodolist extends RecyclerView.Adapter<RecyclerVi
     public void setOnItemClickListener(MyClickListener myClickListener) {
         this.myClickListener = myClickListener;
     }
+
     public interface MyClickListener {
         public void onItemClick(int position, View v);
     }

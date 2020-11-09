@@ -43,6 +43,12 @@ public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContra
                 setBtAddOnClick();
             }
         });
+        btCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectToTasks();
+            }
+        });
 
         setTitle("Main Page");
 
@@ -65,6 +71,7 @@ public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContra
 //        intent.putExtra("email", email);
 //        intent.putExtra("password", password);
         startActivity(intent);
+        activity.finish();
     }
 
     public AddTaskContract.Presenter getPresenter() {

@@ -2,6 +2,7 @@ package com.example.to_dolist.modules.tasks;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,12 +26,8 @@ import java.util.ArrayList;
 
 public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Presenter>
         implements TasksContract.View {
-//    ImageView ivProfilePicture;
     TextView tvEmail;
-//    TextView tvPassword;
     Button btAddTask;
-    Button btDeleteTask;
-    ListView lvTasks;
     RecyclerView rvTasks;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -45,8 +42,6 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
         fragmentView = inflater.inflate(R.layout.fragment_tasks, container, false);
         tvEmail = fragmentView.findViewById(R.id.tv_email);
         btAddTask = fragmentView.findViewById(R.id.bt_add_task);
-//        btDeleteTask = fragmentView.findViewById(R.id.bt_delete_task);
-//        lvTasks = fragmentView.findViewById(R.id.lv_tasks);
 
         mPresenter = new TasksPresenter(this);
         mPresenter.start();
@@ -62,11 +57,12 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
         rvTasks.setAdapter(mAdapter);
 
 
-        ((RecyclerViewAdapterTodolist) mAdapter).setOnItemClickListener(new RecyclerViewAdapterTodolist.MyClickListener() {
+        ((RecyclerViewAdapterTodolist) mAdapter).setOnItemClickListener(
+                new RecyclerViewAdapterTodolist.MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
                 String id = data.get(position).getId();
-//                Log.d("BELAJAR ACTIVITY",">>>>>"+ position);
+                Log.d("AppDebug","clicked position : "+ position);
                 redirectToEditTask(id);
             }
         });
@@ -75,7 +71,6 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
             @Override
             public void onClick(View v) {
                 redirectToAddTask();
-//                setBtAddTaskOnClick();
             }
         });
 
@@ -97,12 +92,6 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
 ////        showPassword(password);
 //    }
 
-//    public void showPassword(String password) {
-//        String passwordText = getResources().getString(R.string.tv_password_text) + password;
-//
-//        tvPassword.setText(passwordText);
-//    }
-//
     public void showEmail(String email) {
         String emailText = getResources().getString(R.string.tv_email_text) + email;
 
@@ -131,13 +120,14 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
 //        intent.putExtra("email", email);
 //        intent.putExtra("password", password);
         startActivity(intent);
-//        activity.finish();
+        activity.finish();
     }
 
     public void redirectToEditTask(String id) {
         Intent intent = new Intent(activity, EditTaskActivity.class);
         intent.putExtra("TaskId", id);
         startActivity(intent);
+        activity.finish();
     }
 
     public TasksContract.Presenter getPresenter() {
