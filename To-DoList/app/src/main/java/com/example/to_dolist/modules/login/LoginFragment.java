@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.to_dolist.R;
 import com.example.to_dolist.base.BaseFragment;
+import com.example.to_dolist.data.source.UserSessionRepository;
 import com.example.to_dolist.modules.tasks.TasksActivity;
 
 public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Presenter> implements
@@ -29,7 +31,7 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.fragment_login, container, false);
-        mPresenter = new LoginPresenter(this);
+        mPresenter = new LoginPresenter(this, new UserSessionRepository(activity));
         mPresenter.start();
 
         etEmail = fragmentView.findViewById(R.id.et_email);
@@ -61,14 +63,13 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
     }
 
     @Override
-    public void redirectToTasks() {
-        Intent intent = new Intent(activity, TasksActivity.class);
-        String email = etEmail.getText().toString();
-        String password = etPassword.getText().toString();
+    public void showMessage(String message) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+    }
 
-        intent.putExtra("email", email);
-        intent.putExtra("password", password);
-        startActivity(intent);
+    @Override
+    public void redirectToTasks() {
+        startActivity(new Intent(activity, TasksActivity.class));
         activity.finish();
     }
 }

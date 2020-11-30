@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.to_dolist.R;
 import com.example.to_dolist.base.BaseFragment;
 import com.example.to_dolist.data.model.Task;
+import com.example.to_dolist.data.model.User;
+import com.example.to_dolist.data.source.UserSessionRepository;
 import com.example.to_dolist.modules.addtask.AddTaskActivity;
 import com.example.to_dolist.modules.edittask.EditTaskActivity;
 import com.example.to_dolist.modules.login.LoginActivity;
@@ -43,9 +45,9 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
         tvEmail = fragmentView.findViewById(R.id.tv_email);
         btAddTask = fragmentView.findViewById(R.id.bt_add_task);
 
-        mPresenter = new TasksPresenter(this);
+        mPresenter = new TasksPresenter(this, new UserSessionRepository(activity));
         mPresenter.start();
-//        mPresenter.initializeProfile(user);
+        mPresenter.initializeProfile();
 
         rvTasks = fragmentView.findViewById(R.id.rv_tasks);
         rvTasks.setHasFixedSize(true);
@@ -109,6 +111,11 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
 
         startActivity(intent);
         activity.finish();
+    }
+
+    @Override
+    public void showProfileInfo(User user) {
+        tvEmail.setText(user.getEmail());
     }
 
     @Override

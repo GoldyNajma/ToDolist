@@ -72,4 +72,16 @@ public class TaskDataAccessObject extends DataAccessObject<Task> {
 
         return -1;
     }
+
+    public ArrayList<Task> getUserTasks(String userId) {
+        ArrayList<Task> userTasks = new ArrayList<>();
+
+        for (Task task : getList()) {
+            if (task.getUserId().equalsIgnoreCase(userId)) {
+                userTasks.add(task);
+            }
+        }
+
+        return userTasks;
+    }
 }

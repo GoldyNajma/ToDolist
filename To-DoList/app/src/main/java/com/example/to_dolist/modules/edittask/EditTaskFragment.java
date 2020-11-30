@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import com.example.to_dolist.R;
 import com.example.to_dolist.base.BaseFragment;
 import com.example.to_dolist.data.model.Task;
+import com.example.to_dolist.data.source.UserSessionRepository;
+import com.example.to_dolist.modules.login.LoginActivity;
 import com.example.to_dolist.modules.tasks.TasksActivity;
 
 //import pens.lab.app.belajaractivity.R;
@@ -42,7 +44,7 @@ public class EditTaskFragment extends BaseFragment<EditTaskActivity, EditTaskCon
              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.fragment_task, container, false);
-        mPresenter = new EditTaskPresenter(this);
+        mPresenter = new EditTaskPresenter(this, new UserSessionRepository(activity));
         mPresenter.start();
 
 //        etTaskTitle = fragmentView.findViewById(R.id.et_TaskTitle);
@@ -81,6 +83,13 @@ public class EditTaskFragment extends BaseFragment<EditTaskActivity, EditTaskCon
     public void redirectToTaskList() {
 //        Intent intent = new Intent(activity, TodoListActivity.class);
         Intent intent = new Intent(activity, TasksActivity.class);
+        startActivity(intent);
+        activity.finish();
+    }
+
+    @Override
+    public void redirectToLogin() {
+        Intent intent = new Intent(activity, LoginActivity.class);
         startActivity(intent);
         activity.finish();
     }

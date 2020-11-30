@@ -9,6 +9,7 @@ public interface LoginContract {
     }
 
     interface View extends BaseView<Presenter> {
+        void showMessage(String message);
         void redirectToTasks();
     }
 }

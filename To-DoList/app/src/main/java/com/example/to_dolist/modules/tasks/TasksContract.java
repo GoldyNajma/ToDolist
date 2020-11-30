@@ -14,14 +14,14 @@ public interface TasksContract {
         void performLogout();
         User getUser();
         ArrayList<Task> getDataSet();
-//        void initializeProfile();
+        void initializeProfile();
 //        void initializeTasks(ArrayList<Bundle> tasks);
 //        void moveToAddTaskPage();
     }
 
     interface View extends BaseView<Presenter> {
         void redirectToLogin();
-//        void showProfileInfo(User user);
+        void showProfileInfo(User user);
 //        void showTasks();
         void redirectToAddTask();
         void redirectToEditTask(String id);

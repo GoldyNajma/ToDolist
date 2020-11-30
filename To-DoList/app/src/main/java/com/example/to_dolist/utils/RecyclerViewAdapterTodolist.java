@@ -1,6 +1,5 @@
 package com.example.to_dolist.utils;
 
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;

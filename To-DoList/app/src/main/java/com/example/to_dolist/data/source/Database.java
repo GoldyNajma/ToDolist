@@ -12,6 +12,10 @@ public class Database {
     public Database() {
         users = new ArrayList<>();
         tasks = new ArrayList<>();
+
+        users.add(new User("0", "goldy@gmail.com", "goldy"));
+        users.add(new User("1", "najma@gmail.com", "najma"));
+        users.add(new User("2", "adli@gmail.com", "adli"));
     }
 
     public ArrayList<User> getUsers() {

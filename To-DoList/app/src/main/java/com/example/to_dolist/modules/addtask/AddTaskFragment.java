@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 
 import com.example.to_dolist.R;
 import com.example.to_dolist.base.BaseFragment;
+import com.example.to_dolist.data.source.UserSessionRepository;
+import com.example.to_dolist.modules.login.LoginActivity;
 import com.example.to_dolist.modules.tasks.TasksActivity;
 
 public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContract.Presenter>
@@ -35,7 +37,7 @@ public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContra
         etTaskName = fragmentView.findViewById(R.id.et_task_title);
         etTaskDescription = fragmentView.findViewById(R.id.et_task_description);
 
-        mPresenter = new AddTaskPresenter(this);
+        mPresenter = new AddTaskPresenter(this, new UserSessionRepository(activity));
         mPresenter.start();
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +72,14 @@ public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContra
 
 //        intent.putExtra("email", email);
 //        intent.putExtra("password", password);
+        startActivity(intent);
+        activity.finish();
+    }
+
+    @Override
+    public void redirectToLogin() {
+        Intent intent = new Intent(activity, LoginActivity.class);
+
         startActivity(intent);
         activity.finish();
     }

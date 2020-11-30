@@ -6,11 +6,13 @@ public class Task extends BaseModel {
     private String id;
     private String title;
     private String description;
+    private String userId;
 
-    public Task(String id, String title, String description) {
+    public Task(String id, String title, String description, String userId) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.userId = userId;
     }
 
     public String getId() {
@@ -35,5 +37,13 @@ public class Task extends BaseModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

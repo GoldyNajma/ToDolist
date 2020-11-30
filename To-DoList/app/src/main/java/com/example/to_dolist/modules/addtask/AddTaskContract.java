@@ -10,5 +10,6 @@ public interface AddTaskContract {
 
     interface View extends BaseView<AddTaskContract.Presenter> {
         void redirectToTasks();
+        void redirectToLogin();
     }
 }
