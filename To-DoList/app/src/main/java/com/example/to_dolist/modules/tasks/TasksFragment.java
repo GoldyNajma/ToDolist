@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -24,6 +23,8 @@ import com.example.to_dolist.modules.edittask.EditTaskActivity;
 import com.example.to_dolist.modules.login.LoginActivity;
 import com.example.to_dolist.utils.RecyclerViewAdapterTodolist;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Presenter>
@@ -38,7 +39,7 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedStateInstance) {
         super.onCreateView(inflater, container, savedStateInstance);
         fragmentView = inflater.inflate(R.layout.fragment_tasks, container, false);
@@ -144,5 +145,15 @@ public class TasksFragment extends BaseFragment<TasksActivity, TasksContract.Pre
     @Override
     public void setPresenter(TasksContract.Presenter presenter) {
         mPresenter = presenter;
+    }
+
+    @Override
+    public void startLoading() {
+
+    }
+
+    @Override
+    public void endLoading() {
+
     }
 }

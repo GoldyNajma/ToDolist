@@ -1,25 +1,23 @@
-package com.example.to_dolist.modules.addtask;
+package com.example.to_dolist.modules.register;
 
-import android.os.Bundle;
 import android.view.View;
 
 import com.example.to_dolist.base.BaseFragmentHolderActivity;
 
-public class AddTaskActivity extends BaseFragmentHolderActivity {
-    AddTaskFragment addTaskFragment;
+public class RegisterActivity extends BaseFragmentHolderActivity {
+    RegisterFragment registerFragment;
     private final int UPDATE_REQUEST = 2019;
 
     @Override
     protected void initializeFragment() {
-        Bundle user = getIntent().getExtras();
-
         initializeView();
 
         btBack.setVisibility(View.GONE);
         btOptionMenu.setVisibility(View.GONE);
         ivIcon.setVisibility(View.VISIBLE);
+        this.setTitle("Register");
 
-        addTaskFragment = new AddTaskFragment();
-        setCurrentFragment(addTaskFragment, false);
+        registerFragment = new RegisterFragment();
+        setCurrentFragment(registerFragment, false);
     }
 }

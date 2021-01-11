@@ -1,39 +1,62 @@
 package com.example.to_dolist.data.model;
 
-import com.example.to_dolist.base.BaseModel;
-
-public class User extends BaseModel {
-    private String id;
+public class User {
+    private int id;
+    private String name;
     private String email;
     private String password;
+    private String image_path;
+    private String created_at;
+    private String updated_at;
 
-    public User(String id, String email, String password) {
+    public User(int id, String name, String email, String password, String image_path,
+                String created_at, String updated_at) {
         this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.image_path = image_path;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+    }
+
+    public User(String name, String email, String password, String image_path) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.image_path = image_path;
+    }
+
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getName() {
+        return name;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getImage_path() {
+        return image_path;
+    }
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public String getUpdated_at() {
+        return updated_at;
     }
 }

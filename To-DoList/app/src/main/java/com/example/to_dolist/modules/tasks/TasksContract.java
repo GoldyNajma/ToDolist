@@ -1,7 +1,5 @@
 package com.example.to_dolist.modules.tasks;
 
-import android.os.Bundle;
-
 import com.example.to_dolist.base.BasePresenter;
 import com.example.to_dolist.base.BaseView;
 import com.example.to_dolist.data.model.Task;

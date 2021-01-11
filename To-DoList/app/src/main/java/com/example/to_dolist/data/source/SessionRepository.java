@@ -1,11 +1,11 @@
 package com.example.to_dolist.data.source;
 
 public interface SessionRepository<T> {
-    public final String SHARED_PREFERENCE_NAME = "SessionSharedPreferences";
+    String SHARED_PREFERENCE_NAME = "SessionSharedPreferences";
 
-    abstract T initialize(T sessionData);
-    abstract T getSessionData();
-    abstract void setSessionData(T sessionData);
-    abstract void destroy();
-    abstract void update(T sessionData);
+    T initialize(T sessionData);
+    T getSessionData();
+    void setSessionData(T sessionData);
+    void destroy();
+    void update(T sessionData);
 }

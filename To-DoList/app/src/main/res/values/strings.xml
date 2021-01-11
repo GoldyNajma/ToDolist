@@ -13,9 +13,12 @@
     <string name="et_task_title_hint">Task title</string>
     <string name="et_task_description_hint">Task description</string>
 
+    <string name="et_name_hint">Enter name</string>
     <string name="et_email_hint">Enter email address</string>
     <string name="et_password_hint">Enter password</string>
+    <string name="et_password_confirmation_hint">Enter password confirmation</string>
     <string name="bt_login_text">LOGIN</string>
+    <string name="bt_register_text">REGISTER</string>
     <string name="iv_profile_picture_content_description">Profile Picture</string>
     <string name="tv_email_text">Email:\u0020</string>
     <string name="tv_password_text">Password:\u0020</string>

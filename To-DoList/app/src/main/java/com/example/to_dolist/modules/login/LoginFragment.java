@@ -7,36 +7,49 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.to_dolist.R;
 import com.example.to_dolist.base.BaseFragment;
+import com.example.to_dolist.data.source.TokenSessionRepository;
 import com.example.to_dolist.data.source.UserSessionRepository;
+import com.example.to_dolist.modules.register.RegisterActivity;
 import com.example.to_dolist.modules.tasks.TasksActivity;
 
-public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Presenter> implements
-        LoginContract.View {
+import org.jetbrains.annotations.NotNull;
+
+public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Presenter>
+        implements LoginContract.View {
     EditText etEmail;
     EditText etPassword;
     Button btLogin;
+    Button btRegister;
+    ProgressBar pbLogin;
 
-    public LoginFragment() {
-    }
+    public LoginFragment() { }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.fragment_login, container, false);
-        mPresenter = new LoginPresenter(this, new UserSessionRepository(activity));
+        mPresenter = new LoginPresenter(this,
+                new LoginInteractor(
+                        new UserSessionRepository(activity),
+                        new TokenSessionRepository(activity)
+                )
+        );
         mPresenter.start();
 
         etEmail = fragmentView.findViewById(R.id.et_email);
         etPassword = fragmentView.findViewById(R.id.et_password);
         btLogin = fragmentView.findViewById(R.id.bt_login);
+        btRegister = fragmentView.findViewById(R.id.bt_register);
+        pbLogin = fragmentView.findViewById(R.id.pb_login);
 
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,8 +57,12 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
                 setBtLoginClick();
             }
         });
-
-        setTitle("My Login View");
+        btRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setBtRegisterClick();
+            }
+        });
 
         return fragmentView;
     }
@@ -57,9 +74,23 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
         mPresenter.performLogin(email, password);
     }
 
+    public void setBtRegisterClick() {
+        this.redirectToRegister();
+    }
+
     @Override
     public void setPresenter(LoginContract.Presenter presenter) {
         mPresenter = presenter;
+    }
+
+    @Override
+    public void startLoading() {
+        pbLogin.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void endLoading() {
+        pbLogin.setVisibility(View.GONE);
     }
 
     @Override
@@ -70,6 +101,12 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
     @Override
     public void redirectToTasks() {
         startActivity(new Intent(activity, TasksActivity.class));
+        activity.finish();
+    }
+
+    @Override
+    public void redirectToRegister() {
+        startActivity(new Intent(activity, RegisterActivity.class));
         activity.finish();
     }
 }

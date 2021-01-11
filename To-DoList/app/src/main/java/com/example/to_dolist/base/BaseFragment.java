@@ -12,6 +12,8 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.example.to_dolist.R;
 
+import org.jetbrains.annotations.NotNull;
+
 public abstract class BaseFragment<T extends FragmentActivity, U extends BasePresenter> extends
         Fragment {
     protected String title;
@@ -30,7 +32,7 @@ public abstract class BaseFragment<T extends FragmentActivity, U extends BasePre
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
@@ -42,7 +44,7 @@ public abstract class BaseFragment<T extends FragmentActivity, U extends BasePre
 
     @SuppressWarnings("unchecked")
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NotNull Context context) {
         super.onAttach(context);
         this.activity = (T) context;
         this.fragmentListener = (FragmentListener) context;

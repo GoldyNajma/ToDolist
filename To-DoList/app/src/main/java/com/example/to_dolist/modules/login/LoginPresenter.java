@@ -1,40 +1,44 @@
 package com.example.to_dolist.modules.login;
 
-import android.widget.Toast;
-
-import com.example.to_dolist.data.dataaccessobject.UserDataAccessObject;
-import com.example.to_dolist.data.model.User;
-import com.example.to_dolist.data.source.SessionRepository;
+import com.example.to_dolist.api_responses.LoginResponse;
+import com.example.to_dolist.callback.RequestCallback;
 
 public class LoginPresenter implements LoginContract.Presenter {
     private final LoginContract.View view;
-    private final SessionRepository<User> sessionRepository;
-    private final UserDataAccessObject userDAO;
+    private final LoginContract.Interactor interactor;
 
-    public LoginPresenter(LoginContract.View view, SessionRepository<User> sessionRepository) {
+    public LoginPresenter(LoginContract.View view,
+                          LoginContract.Interactor interactor) {
         this.view = view;
-        this.sessionRepository = sessionRepository;
-        this.userDAO = new UserDataAccessObject();
+        this.interactor = interactor;
     }
 
     @Override
     public void start() {
-        if (sessionRepository.getSessionData() != null) {
+        if (interactor.getToken() != null) {
             view.redirectToTasks();
         }
     }
 
     @Override
     public void performLogin(final String email, final String password) {
-        //proses login
-        User loggedUser = userDAO.validateUser(email, password);
+        view.startLoading();
+        interactor.requestLogin(email, password, new RequestCallback<LoginResponse>() {
+            @Override
+            public void requestSuccess(LoginResponse data) {
+                interactor.saveToken(data.token_type + " " + data.token);
+                interactor.saveUser(data.user);
 
-        //if login success
-        if (loggedUser != null) {
-            sessionRepository.setSessionData(loggedUser);
-            view.redirectToTasks();
-        } else {
-            view.showMessage("Email or password invalid");
-        }
+                view.endLoading();
+                view.showMessage("Token: " + interactor.getToken());
+//                view.redirectToTasks();
+            }
+
+            @Override
+            public void requestFailed(String errorMessage) {
+                view.endLoading();
+                view.showMessage(errorMessage);
+            }
+        });
     }
 }

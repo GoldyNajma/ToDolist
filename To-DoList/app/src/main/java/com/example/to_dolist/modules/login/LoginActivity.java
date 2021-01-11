@@ -14,8 +14,8 @@ public class LoginActivity extends BaseFragmentHolderActivity {
 
         btBack.setVisibility(View.GONE);
         btOptionMenu.setVisibility(View.GONE);
-//        ivIcon.setImageResource(R.drawable.....);
         ivIcon.setVisibility(View.VISIBLE);
+        this.setTitle("Login");
 
         loginFragment = new LoginFragment();
         setCurrentFragment(loginFragment, false);

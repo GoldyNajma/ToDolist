@@ -4,9 +4,6 @@ import android.view.View;
 
 import com.example.to_dolist.base.BaseFragmentHolderActivity;
 
-//import pens.lab.app.belajaractivity.base.BaseFragmentHolderActivity;
-
-
 public class EditTaskActivity extends BaseFragmentHolderActivity {
     EditTaskFragment editTaskFragment;
     private final int UPDATE_REQUEST = 2019;
@@ -17,7 +14,6 @@ public class EditTaskActivity extends BaseFragmentHolderActivity {
 
         btBack.setVisibility(View.GONE);
         btOptionMenu.setVisibility(View.GONE);
-//        ivIcon.setImageResource(R.drawable.....);
         ivIcon.setVisibility(View.VISIBLE);
 
         editTaskFragment = new EditTaskFragment();

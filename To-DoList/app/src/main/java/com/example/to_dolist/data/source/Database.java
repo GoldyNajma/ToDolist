@@ -6,25 +6,25 @@ import com.example.to_dolist.data.model.User;
 import java.util.ArrayList;
 
 public class Database {
-    private ArrayList<User> users;
+//    private ArrayList<User> users;
     private ArrayList<Task> tasks;
 
     public Database() {
-        users = new ArrayList<>();
+//        users = new ArrayList<>();
         tasks = new ArrayList<>();
 
-        users.add(new User("0", "goldy@gmail.com", "goldy"));
-        users.add(new User("1", "najma@gmail.com", "najma"));
-        users.add(new User("2", "adli@gmail.com", "adli"));
+//        users.add(new User("0", "goldy@gmail.com", "goldy"));
+//        users.add(new User("1", "najma@gmail.com", "najma"));
+//        users.add(new User("2", "adli@gmail.com", "adli"));
     }
 
-    public ArrayList<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
-    }
+//    public ArrayList<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(ArrayList<User> users) {
+//        this.users = users;
+//    }
 
     public ArrayList<Task> getTasks() {
         return tasks;

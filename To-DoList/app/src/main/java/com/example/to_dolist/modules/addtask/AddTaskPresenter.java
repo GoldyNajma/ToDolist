@@ -5,7 +5,6 @@ import android.util.Log;
 import com.example.to_dolist.data.dataaccessobject.DataAccessObject;
 import com.example.to_dolist.data.dataaccessobject.TaskDataAccessObject;
 import com.example.to_dolist.data.model.User;
-import com.example.to_dolist.data.source.Database;
 import com.example.to_dolist.data.model.Task;
 import com.example.to_dolist.data.source.SessionRepository;
 
@@ -34,7 +33,7 @@ public class AddTaskPresenter implements AddTaskContract.Presenter {
         if (!title.equals("")) {
             ArrayList<Task> tasks = (ArrayList<Task>) taskDAO.getList();
             String id = "0";
-            String userId = sessionRepository.getSessionData().getId();
+            String userId = Integer.toString(sessionRepository.getSessionData().getId());
             Task task;
 
             if (tasks.size() > 0) {

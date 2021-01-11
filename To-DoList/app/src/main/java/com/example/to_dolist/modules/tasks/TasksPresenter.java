@@ -44,7 +44,7 @@ public class TasksPresenter implements TasksContract.Presenter {
     @Override
     public ArrayList<Task> getDataSet() {
         //get Data from shared preference
-        return taskDAO.getUserTasks(sessionRepository.getSessionData().getId());
+        return taskDAO.getUserTasks(Integer.toString(sessionRepository.getSessionData().getId()));
     }
 
     @Override

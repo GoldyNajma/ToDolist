@@ -17,15 +17,7 @@ import com.example.to_dolist.data.source.UserSessionRepository;
 import com.example.to_dolist.modules.login.LoginActivity;
 import com.example.to_dolist.modules.tasks.TasksActivity;
 
-//import pens.lab.app.belajaractivity.R;
-//import pens.lab.app.belajaractivity.base.BaseFragment;
-//import pens.lab.app.belajaractivity.data.model.Task;
-//import pens.lab.app.belajaractivity.modul.todolist.TodoListActivity;
-
-
-/**
- * Created by fahrul on 13/03/19.
- */
+import org.jetbrains.annotations.NotNull;
 
 public class EditTaskFragment extends BaseFragment<EditTaskActivity, EditTaskContract.Presenter> implements EditTaskContract.View {
 
@@ -40,8 +32,8 @@ public class EditTaskFragment extends BaseFragment<EditTaskActivity, EditTaskCon
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,
-             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NotNull LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.fragment_task, container, false);
         mPresenter = new EditTaskPresenter(this, new UserSessionRepository(activity));
@@ -77,6 +69,16 @@ public class EditTaskFragment extends BaseFragment<EditTaskActivity, EditTaskCon
     @Override
     public void setPresenter(EditTaskContract.Presenter presenter) {
         mPresenter = presenter;
+    }
+
+    @Override
+    public void startLoading() {
+
+    }
+
+    @Override
+    public void endLoading() {
+
     }
 
     @Override

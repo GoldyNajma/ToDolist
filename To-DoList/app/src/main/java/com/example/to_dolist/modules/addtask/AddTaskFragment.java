@@ -16,6 +16,8 @@ import com.example.to_dolist.data.source.UserSessionRepository;
 import com.example.to_dolist.modules.login.LoginActivity;
 import com.example.to_dolist.modules.tasks.TasksActivity;
 
+import org.jetbrains.annotations.NotNull;
+
 public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContract.Presenter>
         implements AddTaskContract.View {
     Button btAdd;
@@ -28,7 +30,7 @@ public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContra
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedStateInstance) {
         super.onCreateView(inflater, container, savedStateInstance);
         fragmentView = inflater.inflate(R.layout.fragment_task, container, false);
@@ -91,5 +93,15 @@ public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContra
     @Override
     public void setPresenter(AddTaskContract.Presenter presenter) {
         mPresenter = presenter;
+    }
+
+    @Override
+    public void startLoading() {
+
+    }
+
+    @Override
+    public void endLoading() {
+
     }
 }

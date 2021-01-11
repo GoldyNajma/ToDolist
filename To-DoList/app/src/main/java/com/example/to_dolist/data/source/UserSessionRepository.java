@@ -9,8 +9,8 @@ import com.google.gson.Gson;
 import org.jetbrains.annotations.NotNull;
 
 public class UserSessionRepository implements SessionRepository<User> {
-    private static String SESSION_USER = "SessionUser";
-    private SharedPreferences sharedPreferences;
+    private static final String SESSION_USER = "SessionUser";
+    private final SharedPreferences sharedPreferences;
 
     public UserSessionRepository(@NotNull Context context) {
         sharedPreferences
