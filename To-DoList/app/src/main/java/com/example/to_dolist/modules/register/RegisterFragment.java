@@ -25,11 +25,11 @@ public class RegisterFragment extends BaseFragment<RegisterActivity, RegisterCon
     EditText etEmail;
     EditText etPassword;
     EditText etPasswordConfirmation;
-    Button btRegister;
-    Button btLogin;
-    ProgressBar pbRegister;
+    Button btnRegister;
+    Button btnLogin;
+    ProgressBar pbLoading;
 
-    public RegisterFragment() { }
+    public RegisterFragment() {}
 
     @Nullable
     @Override
@@ -42,31 +42,32 @@ public class RegisterFragment extends BaseFragment<RegisterActivity, RegisterCon
         );
         mPresenter.start();
 
-        etName = fragmentView.findViewById(R.id.et_name);
-        etEmail = fragmentView.findViewById(R.id.et_email);
-        etPassword = fragmentView.findViewById(R.id.et_password);
-        etPasswordConfirmation = fragmentView.findViewById(R.id.et_password_confirmation);
-        btRegister = fragmentView.findViewById(R.id.bt_register);
-        btLogin = fragmentView.findViewById(R.id.bt_login);
-        pbRegister = fragmentView.findViewById(R.id.pb_register);
+        etName  = fragmentView.findViewById(R.id.register_et_name);
+        etEmail = fragmentView.findViewById(R.id.register_et_email);
+        etPassword = fragmentView.findViewById(R.id.register_et_password);
+        etPasswordConfirmation = fragmentView.findViewById(R.id.register_et_password_confirmation);
+        btnRegister = fragmentView.findViewById(R.id.register_btn_register);
+        btnLogin = fragmentView.findViewById(R.id.register_btn_login);
+        pbLoading = fragmentView.findViewById(R.id.register_pb_loading);
 
-        btLogin.setOnClickListener(new View.OnClickListener() {
+        pbLoading.setVisibility(View.GONE);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setBtLoginClick();
+                setBtnLoginClick();
             }
         });
-        btRegister.setOnClickListener(new View.OnClickListener() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setBtRegisterClick();
+                setBtnRegisterClick();
             }
         });
 
         return fragmentView;
     }
 
-    public void setBtRegisterClick() {
+    public void setBtnRegisterClick() {
         String name = etName.getText().toString();
         String email = etEmail.getText().toString();
         String password = etPassword.getText().toString();
@@ -79,7 +80,7 @@ public class RegisterFragment extends BaseFragment<RegisterActivity, RegisterCon
         }
     }
 
-    public void setBtLoginClick() {
+    public void setBtnLoginClick() {
         this.redirectToLogin();
     }
 
@@ -101,11 +102,21 @@ public class RegisterFragment extends BaseFragment<RegisterActivity, RegisterCon
 
     @Override
     public void startLoading() {
-        pbRegister.setVisibility(View.VISIBLE);
+        pbLoading.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void endLoading() {
-        pbRegister.setVisibility(View.VISIBLE);
+        pbLoading.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setLoginButtonEnabled(boolean isEnabled) {
+        btnLogin.setEnabled(isEnabled);
+    }
+
+    @Override
+    public void setRegisterButtonEnabled(boolean isEnabled) {
+        btnRegister.setEnabled(isEnabled);
     }
 }

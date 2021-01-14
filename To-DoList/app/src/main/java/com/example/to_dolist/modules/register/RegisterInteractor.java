@@ -29,34 +29,27 @@ public class RegisterInteractor implements RegisterContract.Interactor {
         JSONObject registerRequestJSON
                 = createRegisterRequestJSON(name, email, password, passwordConfirmation);
 
-        Log.d("abcde", "requestRegister di Interactor");
-
         AndroidNetworking.post(Constants.BASE_URL + "/register")
                 .addJSONObjectBody(registerRequestJSON)
                 .build()
                 .getAsObject(RegisterResponse.class, new ParsedRequestListener<RegisterResponse>() {
                     @Override
                     public void onResponse(RegisterResponse response) {
-
-                        Log.d("abcde", "onResponse");
                         if (response == null) {
                             requestCallback.requestFailed("Null response.");
                         } else if (response.user != null) {
                             requestCallback.requestSuccess(response);
                         } else {
-                            requestCallback.requestFailed("Registration failed.");
+                            requestCallback.requestFailed("User registration failed.");
                         }
                     }
 
                     @Override
                     public void onError(ANError anError) {
-
-                        Log.d("abcde", "onError");
-                        if (anError.getErrorCode() == 422) {
-                            requestCallback.requestFailed("Invalid registration request.");
+                        if (anError.getErrorCode() == 409){
+                            requestCallback.requestFailed("User registration failed.");
                         } else {
-                            Log.d("abcde", Integer.toString(anError.getErrorCode()));
-                            requestCallback.requestFailed(anError.getMessage());
+                            requestCallback.requestFailed(anError.getErrorDetail());
                         }
                     }
                 });

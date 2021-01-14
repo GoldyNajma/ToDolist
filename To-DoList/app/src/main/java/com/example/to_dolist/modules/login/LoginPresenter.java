@@ -1,5 +1,8 @@
 package com.example.to_dolist.modules.login;
 
+import android.text.TextUtils;
+import android.util.Patterns;
+
 import com.example.to_dolist.api_responses.LoginResponse;
 import com.example.to_dolist.callback.RequestCallback;
 
@@ -20,8 +23,32 @@ public class LoginPresenter implements LoginContract.Presenter {
         }
     }
 
+    private boolean isEmailValid(String email) {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    @Override
+    public boolean validateFields(String email, String password) {
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            view.showMessage("All of the fields are required.");
+            return false;
+        }
+        if (!isEmailValid(email)) {
+            view.showMessage("Invalid email address.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void setViewsEnabled(boolean isEnabled) {
+        view.setLoginButtonEnabled(isEnabled);
+        view.setRegisterButtonEnabled(isEnabled);
+    }
+
     @Override
     public void performLogin(final String email, final String password) {
+        setViewsEnabled(false);
         view.startLoading();
         interactor.requestLogin(email, password, new RequestCallback<LoginResponse>() {
             @Override
@@ -30,13 +57,14 @@ public class LoginPresenter implements LoginContract.Presenter {
                 interactor.saveUser(data.user);
 
                 view.endLoading();
-                view.showMessage("Token: " + interactor.getToken());
-//                view.redirectToTasks();
+                setViewsEnabled(true);
+                view.redirectToTasks();
             }
 
             @Override
             public void requestFailed(String errorMessage) {
                 view.endLoading();
+                setViewsEnabled(true);
                 view.showMessage(errorMessage);
             }
         });

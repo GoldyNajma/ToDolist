@@ -1,25 +1,42 @@
 <resources>
     <string name="app_name">To-Do List</string>
-    <string name="et_search_hint">Search task</string>
-    <string name="bt_search_text">SEARCH</string>
-    <string name="bt_add_task_text">ADD TASK</string>
-    <string name="bt_delete_task_text">DELETE TASK</string>
-    <string name="tv_task_title_text">Task Title</string>
-    <string name="bt_done_text">DONE</string>
-    <string name="cb_mark_as_complete_text">Mark as complete</string>
-    <string name="tv_task_description_text">Task Description</string>
-    <string name="bt_save_text">SAVE</string>
-    <string name="bt_cancel_text">CANCEL</string>
-    <string name="et_task_title_hint">Task title</string>
-    <string name="et_task_description_hint">Task description</string>
 
-    <string name="et_name_hint">Enter name</string>
-    <string name="et_email_hint">Enter email address</string>
-    <string name="et_password_hint">Enter password</string>
-    <string name="et_password_confirmation_hint">Enter password confirmation</string>
-    <string name="bt_login_text">LOGIN</string>
-    <string name="bt_register_text">REGISTER</string>
-    <string name="iv_profile_picture_content_description">Profile Picture</string>
-    <string name="tv_email_text">Email:\u0020</string>
-    <string name="tv_password_text">Password:\u0020</string>
+    <string name="register_title">Register</string>
+    <string name="register_et_name_hint">Enter name</string>
+    <string name="register_et_email_hint">Enter email address</string>
+    <string name="register_et_password_hint">Enter password</string>
+    <string name="register_et_password_confirmation_hint">Enter password confirmation</string>
+    <string name="register_btn_login_text">Login</string>
+    <string name="register_btn_register_text">Register</string>
+
+    <string name="login_title">Login</string>
+    <string name="login_et_email_hint">Enter email address</string>
+    <string name="login_et_password_hint">Enter password</string>
+    <string name="login_btn_login_text">Login</string>
+    <string name="login_btn_register_text">Register</string>
+
+    <string name="home_title">Home</string>
+    <string name="home_iv_account_content_description">Account Image</string>
+    <string name="home_fab_add_task_content_description">Add a new task</string>
+    <string name="home_cb_show_completed_text">Show completed</string>
+    <string name="home_cb_show_deleted_only_text">Show deleted only</string>
+
+    <string name="item_task_tv_status_completed_text">Completed</string>
+    <string name="item_task_tv_status_uncompleted_text">Not Completed Yet</string>
+    <string name="item_task_tv_status_deleted_text">Deleted</string>
+    <string name="item_task_ib_share_content_description">Share to other app</string>
+
+    <string name="task_title_add">Add New Task</string>
+    <string name="task_title_edit">Edit Task</string>
+    <string name="task_tv_title_text">Task Title</string>
+    <string name="task_et_title_hint">Enter task title</string>
+    <string name="task_tv_description_text">Task Description</string>
+    <string name="task_et_description_hint">Enter task description</string>
+    <string name="task_cb_completed_text">Mark as complete</string>
+    <string name="task_btn_delete_soft_text">Delete</string>
+    <string name="task_btn_delete_permanent_text">Delete Permanently</string>
+    <string name="task_btn_restore_text">Restore</string>
+    <string name="task_btn_save_text">Save</string>
+    <string name="task_btn_cancel_text">Cancel</string>
+    <string name="task_btn_share_text">Share</string>
 </resources>

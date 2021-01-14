@@ -7,73 +7,98 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.to_dolist.R;
 import com.example.to_dolist.base.BaseFragment;
-import com.example.to_dolist.data.source.UserSessionRepository;
+import com.example.to_dolist.data.source.TokenSessionRepository;
 import com.example.to_dolist.modules.login.LoginActivity;
-import com.example.to_dolist.modules.tasks.TasksActivity;
+import com.example.to_dolist.modules.home.HomeActivity;
 
 import org.jetbrains.annotations.NotNull;
 
 public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContract.Presenter>
         implements AddTaskContract.View {
-    Button btAdd;
-    Button btCancel;
-    EditText etTaskName;
-    EditText etTaskDescription;
+    Button btnSave;
+    Button btnCancel;
+    EditText etTitle;
+    EditText etDescription;
+    ProgressBar pbLoading;
 
-    public AddTaskFragment() {
-
-    }
+    public AddTaskFragment() {}
 
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedStateInstance) {
         super.onCreateView(inflater, container, savedStateInstance);
         fragmentView = inflater.inflate(R.layout.fragment_task, container, false);
-        btAdd = fragmentView.findViewById(R.id.bt_save);
-        btCancel = fragmentView.findViewById(R.id.bt_cancel);
-        etTaskName = fragmentView.findViewById(R.id.et_task_title);
-        etTaskDescription = fragmentView.findViewById(R.id.et_task_description);
+        btnSave = fragmentView.findViewById(R.id.task_btn_save);
+        btnCancel = fragmentView.findViewById(R.id.task_btn_cancel);
+        etTitle = fragmentView.findViewById(R.id.task_et_title);
+        etDescription = fragmentView.findViewById(R.id.task_et_description);
+        pbLoading = fragmentView.findViewById(R.id.task_pb_loading);
 
-        mPresenter = new AddTaskPresenter(this, new UserSessionRepository(activity));
+        fragmentView.findViewById(R.id.task_cb_completed).setVisibility(View.GONE);
+        fragmentView.findViewById(R.id.task_btn_delete).setVisibility(View.GONE);
+        fragmentView.findViewById(R.id.task_btn_restore).setVisibility(View.GONE);
+
+        mPresenter = new AddTaskPresenter(this,
+                new AddTaskInteractor(
+                        new TokenSessionRepository(activity)
+                )
+        );
         mPresenter.start();
-        btAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setBtAddOnClick();
-            }
-        });
-        btCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                redirectToTasks();
-            }
-        });
 
-        setTitle("Main Page");
+        pbLoading.setVisibility(View.GONE);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setBtnAddOnClick();
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setBtnCancelOnClick();
+            }
+        });
 
         return fragmentView;
     }
 
-    public void setBtAddOnClick() {
-        String taskTitle = etTaskName.getText().toString();
-        String taskDescription = etTaskDescription.getText().toString();
+    public void setBtnAddOnClick() {
+        String title = etTitle.getText().toString();
+        String description = etDescription.getText().toString();
+        String imagePath = null;
+        boolean completed = false;
+        boolean isValid = mPresenter.validateFields(title, description, imagePath, completed);
 
-        mPresenter.saveData(taskTitle, taskDescription);
+        if (isValid) {
+            mPresenter.saveTask(title, description, imagePath, completed);
+        }
+    }
+
+    public void setBtnCancelOnClick() {
+        redirectToHome();
     }
 
     @Override
-    public void redirectToTasks() {
-        Intent intent = new Intent(activity, TasksActivity.class);
-//        String email = user.getString("email");
-//        String password = user.getString("password");
+    public void setSaveButtonEnabled(boolean isEnabled) {
+        btnSave.setEnabled(isEnabled);
+    }
 
-//        intent.putExtra("email", email);
-//        intent.putExtra("password", password);
+    @Override
+    public void setCancelButtonEnabled(boolean isEnabled) {
+        btnCancel.setEnabled(isEnabled);
+    }
+
+    @Override
+    public void redirectToHome() {
+        Intent intent = new Intent(activity, HomeActivity.class);
+
         startActivity(intent);
         activity.finish();
     }
@@ -97,11 +122,16 @@ public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContra
 
     @Override
     public void startLoading() {
-
+        pbLoading.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void endLoading() {
+        pbLoading.setVisibility(View.GONE);
+    }
 
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 }

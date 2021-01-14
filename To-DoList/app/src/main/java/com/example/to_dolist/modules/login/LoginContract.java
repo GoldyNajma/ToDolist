@@ -8,11 +8,13 @@ import com.example.to_dolist.data.model.User;
 
 public interface LoginContract {
     interface Presenter extends BasePresenter {
+        boolean validateFields(String email, String password);
         void performLogin(String email, String password);
     }
 
     interface View extends BaseView<Presenter> {
-        void showMessage(String message);
+        void setLoginButtonEnabled(boolean isEnabled);
+        void setRegisterButtonEnabled(boolean isEnabled);
         void redirectToTasks();
         void redirectToRegister();
     }

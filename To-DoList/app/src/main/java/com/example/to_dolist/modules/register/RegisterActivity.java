@@ -2,6 +2,7 @@ package com.example.to_dolist.modules.register;
 
 import android.view.View;
 
+import com.example.to_dolist.R;
 import com.example.to_dolist.base.BaseFragmentHolderActivity;
 
 public class RegisterActivity extends BaseFragmentHolderActivity {
@@ -15,7 +16,7 @@ public class RegisterActivity extends BaseFragmentHolderActivity {
         btBack.setVisibility(View.GONE);
         btOptionMenu.setVisibility(View.GONE);
         ivIcon.setVisibility(View.VISIBLE);
-        this.setTitle("Register");
+        setTitle(getString(R.string.register_title));
 
         registerFragment = new RegisterFragment();
         setCurrentFragment(registerFragment, false);

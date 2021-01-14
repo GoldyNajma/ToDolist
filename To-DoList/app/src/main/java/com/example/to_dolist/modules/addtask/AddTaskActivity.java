@@ -3,6 +3,7 @@ package com.example.to_dolist.modules.addtask;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.to_dolist.R;
 import com.example.to_dolist.base.BaseFragmentHolderActivity;
 
 public class AddTaskActivity extends BaseFragmentHolderActivity {
@@ -11,13 +12,12 @@ public class AddTaskActivity extends BaseFragmentHolderActivity {
 
     @Override
     protected void initializeFragment() {
-        Bundle user = getIntent().getExtras();
-
         initializeView();
 
         btBack.setVisibility(View.GONE);
         btOptionMenu.setVisibility(View.GONE);
         ivIcon.setVisibility(View.VISIBLE);
+        setTitle(getString(R.string.task_title_add));
 
         addTaskFragment = new AddTaskFragment();
         setCurrentFragment(addTaskFragment, false);

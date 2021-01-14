@@ -1,26 +1,25 @@
-package com.example.to_dolist.modules.tasks;
+package com.example.to_dolist.modules.home;
 
-import android.os.Bundle;
 import android.view.View;
 
+import com.example.to_dolist.R;
 import com.example.to_dolist.base.BaseFragmentHolderActivity;
 
-public class TasksActivity extends BaseFragmentHolderActivity {
-    TasksFragment tasksFragment;
+public class HomeActivity extends BaseFragmentHolderActivity {
+    HomeFragment homeFragment;
     private final int UPDATE_REQUEST = 2019;
 
     @Override
     protected void initializeFragment() {
-        Bundle user = getIntent().getExtras();
-
         initializeView();
 
         btBack.setVisibility(View.VISIBLE);
         btOptionMenu.setVisibility(View.GONE);
         ivIcon.setVisibility(View.VISIBLE);
+        setTitle(getString(R.string.home_title));
 
-        tasksFragment = new TasksFragment();
-        setCurrentFragment(tasksFragment, false);
+        homeFragment = new HomeFragment();
+        setCurrentFragment(homeFragment, false);
 
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,7 +30,7 @@ public class TasksActivity extends BaseFragmentHolderActivity {
     }
 
     public void setBtBackOnClick() {
-        TasksContract.Presenter tasksPresenter = tasksFragment.getPresenter();
+        HomeContract.Presenter tasksPresenter = homeFragment.getPresenter();
 
         tasksPresenter.performLogout();
     }

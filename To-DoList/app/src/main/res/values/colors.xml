@@ -28,13 +28,15 @@
     <color name="c">#41a290</color>
 
     <!--Goldy's Color-->
-    <color name="goldyPrimary">#DD8833</color>
-    <color name="goldyPrimaryDark">#CC7722</color>
-    <color name="goldyText">#FDA50F</color>
+    <color name="goldyPrimary">#FFA100</color>
+    <color name="goldyPrimaryDark">#e0a800</color>
+    <color name="goldySecondary">#444444</color>
+    <color name="goldyText">@color/goldySecondary</color>
     <color name="goldyTextLight">#FFFFFF</color>
     <color name="goldyLightBackground">#FADA5E</color>
     <color name="goldyTransparent">#CC6611</color>
     <color name="goldyLayoutColor">#DFDFDF</color>
+    <color name="goldyAccent">#2a76b4</color>
 
 
 </resources>

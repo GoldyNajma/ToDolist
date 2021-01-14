@@ -47,11 +47,18 @@
     <style name="GoldyTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/goldyPrimary</item>
         <item name="colorPrimaryDark">@color/goldyPrimaryDark</item>
+        <item name="colorSecondary">@color/goldySecondary</item>
+        <item name="colorAccent">@color/goldyAccent</item>
         <item name="tabBackgroundColor">@color/goldyPrimaryDark</item>
         <item name="toolbarBackgroundColor">@color/goldyPrimaryDark</item>
-        <item name="textDarkColor">@color/goldyPrimaryDark</item>
+        <item name="textDarkColor">@color/goldyText</item>
         <item name="textTabColor">@color/goldyText</item>
         <item name="textWhiteColor">@color/goldyTextLight</item>
         <item name="detailBackground">@color/goldyLayoutColor</item>
+    </style>
+
+    <style name="ActionBarTitleText"
+        parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
     </style>
 </resources>

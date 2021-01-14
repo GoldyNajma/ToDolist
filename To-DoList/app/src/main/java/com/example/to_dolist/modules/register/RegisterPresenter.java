@@ -51,15 +51,22 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         return true;
     }
 
+    private void setViewsEnabled(boolean isEnabled) {
+        view.setLoginButtonEnabled(isEnabled);
+        view.setRegisterButtonEnabled(isEnabled);
+    }
+
     @Override
     public void performRegister(String name, String email,
                                 String password, String passwordConfirmation) {
+        setViewsEnabled(false);
         view.startLoading();
         interactor.requestRegister(name, email, password, passwordConfirmation,
                                    new RequestCallback<RegisterResponse>() {
             @Override
             public void requestSuccess(RegisterResponse data) {
                 view.endLoading();
+                setViewsEnabled(true);
                 view.showMessage(data.message);
                 view.redirectToLogin();
             }
@@ -67,6 +74,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
             @Override
             public void requestFailed(String errorMessage) {
                 view.endLoading();
+                setViewsEnabled(true);
                 view.showMessage(errorMessage);
             }
         });

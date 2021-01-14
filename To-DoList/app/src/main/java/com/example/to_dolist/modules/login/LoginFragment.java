@@ -17,7 +17,7 @@ import com.example.to_dolist.base.BaseFragment;
 import com.example.to_dolist.data.source.TokenSessionRepository;
 import com.example.to_dolist.data.source.UserSessionRepository;
 import com.example.to_dolist.modules.register.RegisterActivity;
-import com.example.to_dolist.modules.tasks.TasksActivity;
+import com.example.to_dolist.modules.home.HomeActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -25,9 +25,9 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
         implements LoginContract.View {
     EditText etEmail;
     EditText etPassword;
-    Button btLogin;
-    Button btRegister;
-    ProgressBar pbLogin;
+    Button btnLogin;
+    Button btnRegister;
+    ProgressBar pbLoading;
 
     public LoginFragment() { }
 
@@ -45,36 +45,40 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
         );
         mPresenter.start();
 
-        etEmail = fragmentView.findViewById(R.id.et_email);
-        etPassword = fragmentView.findViewById(R.id.et_password);
-        btLogin = fragmentView.findViewById(R.id.bt_login);
-        btRegister = fragmentView.findViewById(R.id.bt_register);
-        pbLogin = fragmentView.findViewById(R.id.pb_login);
+        etEmail = fragmentView.findViewById(R.id.login_et_email);
+        etPassword = fragmentView.findViewById(R.id.login_et_password);
+        btnLogin = fragmentView.findViewById(R.id.login_btn_login);
+        btnRegister = fragmentView.findViewById(R.id.login_btn_register);
+        pbLoading = fragmentView.findViewById(R.id.login_pb_loading);
 
-        btLogin.setOnClickListener(new View.OnClickListener() {
+        pbLoading.setVisibility(View.GONE);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setBtLoginClick();
+                setBtnLoginClick();
             }
         });
-        btRegister.setOnClickListener(new View.OnClickListener() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setBtRegisterClick();
+                setBtnRegisterClick();
             }
         });
 
         return fragmentView;
     }
 
-    public void setBtLoginClick() {
+    public void setBtnLoginClick() {
         String email = etEmail.getText().toString();
         String password = etPassword.getText().toString();
+        boolean isValidLogin = mPresenter.validateFields(email, password);
 
-        mPresenter.performLogin(email, password);
+        if (isValidLogin) {
+            mPresenter.performLogin(email, password);
+        }
     }
 
-    public void setBtRegisterClick() {
+    public void setBtnRegisterClick() {
         this.redirectToRegister();
     }
 
@@ -85,12 +89,12 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
 
     @Override
     public void startLoading() {
-        pbLogin.setVisibility(View.VISIBLE);
+        pbLoading.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void endLoading() {
-        pbLogin.setVisibility(View.GONE);
+        pbLoading.setVisibility(View.GONE);
     }
 
     @Override
@@ -99,8 +103,18 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
     }
 
     @Override
+    public void setLoginButtonEnabled(boolean isEnabled) {
+        btnLogin.setEnabled(isEnabled);
+    }
+
+    @Override
+    public void setRegisterButtonEnabled(boolean isEnabled) {
+        btnRegister.setEnabled(isEnabled);
+    }
+
+    @Override
     public void redirectToTasks() {
-        startActivity(new Intent(activity, TasksActivity.class));
+        startActivity(new Intent(activity, HomeActivity.class));
         activity.finish();
     }
 

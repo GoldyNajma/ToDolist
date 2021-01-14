@@ -20,16 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".modules.tasks.TasksActivity" />
+        <activity android:name=".modules.home.HomeActivity" />
         <activity android:name=".modules.addtask.AddTaskActivity" />
         <activity android:name=".modules.edittask.EditTaskActivity" />
-        <activity android:name=".MainActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
     </application>
 
 </manifest>

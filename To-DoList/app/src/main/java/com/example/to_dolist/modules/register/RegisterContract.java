@@ -14,7 +14,8 @@ public interface RegisterContract {
     }
 
     interface View extends BaseView<RegisterContract.Presenter> {
-        void showMessage(String message);
+        void setLoginButtonEnabled(boolean isEnabled);
+        void setRegisterButtonEnabled(boolean isEnabled);
         void redirectToLogin();
     }
 
